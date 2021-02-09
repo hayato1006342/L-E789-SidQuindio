@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "sidquindio"
+    }
+  },
+  "defaultProject": "sidquindio",
+  "cli": {
+    "analytics": "fbefc459-9fcd-4648-b2c7-524c8f21fc28"
+  }
 }
