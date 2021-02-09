@@ -9,6 +9,8 @@ import { ContenidoComponent } from './contenido/contenido.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RecoverComponent } from './recover/recover.component';
+import { ContenidoHotelesComponent } from './contenido-hoteles/contenido-hoteles.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { RecoverComponent } from './recover/recover.component';
     ContenidoComponent,
     LoginComponent,
     RegisterComponent,
-    RecoverComponent
+    RecoverComponent,
+    ContenidoHotelesComponent
   ],
   imports: [
     BrowserModule,
