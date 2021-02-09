@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RecoverComponent } from './recover/recover.component';
 import { ContenidoHotelesComponent } from './contenido-hoteles/contenido-hoteles.component';
+import { CreateComponent } from './create/create.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ContenidoHotelesComponent } from './contenido-hoteles/contenido-hoteles
     LoginComponent,
     RegisterComponent,
     RecoverComponent,
-    ContenidoHotelesComponent
+    ContenidoHotelesComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
