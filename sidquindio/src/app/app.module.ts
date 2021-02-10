@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,7 +13,9 @@ import { RegisterComponent } from './register/register.component';
 import { RecoverComponent } from './recover/recover.component';
 import { ContenidoHotelesComponent } from './contenido-hoteles/contenido-hoteles.component';
 import { DetallesComponent } from './detalles/detalles.component';
-=======
+import { PanelAdminComponent } from './panel-admin/panel-admin.component';
+import { CreateComponent } from './create/create.component';
+
 
 @NgModule({
   declarations: [
@@ -22,12 +26,17 @@ import { DetallesComponent } from './detalles/detalles.component';
     LoginComponent,
     RegisterComponent,
     RecoverComponent,
+    CreateComponent,
     ContenidoHotelesComponent,
-    DetallesComponent
+    DetallesComponent,
+    PanelAdminComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

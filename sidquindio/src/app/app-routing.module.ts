@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RecoverComponent } from './recover/recover.component';
 import { DetallesComponent } from './detalles/detalles.component';
+import { PanelAdminComponent } from './panel-admin/panel-admin.component';
+import { CreateComponent } from './create/create.component';
 
 const routes: Routes = [
   {path:'', component: ContenidoComponent},
@@ -14,8 +16,9 @@ const routes: Routes = [
   {path:'registro', component: RegisterComponent},
   {path:'recover', component: RecoverComponent},
   {path:'hoteles', component: ContenidoHotelesComponent},
-  {path:'detalles', component: DetallesComponent}
-
+  {path:'detalles', component: DetallesComponent},
+  {path:'crear', component: CreateComponent},
+  {path:'paneladmin', component: PanelAdminComponent}
 
 ];
 
