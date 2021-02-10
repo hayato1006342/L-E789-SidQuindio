@@ -10,8 +10,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RecoverComponent } from './recover/recover.component';
 import { ContenidoHotelesComponent } from './contenido-hoteles/contenido-hoteles.component';
-import { CreateComponent } from './create/create.component';
-
+import { DetallesComponent } from './detalles/detalles.component';
+=======
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { CreateComponent } from './create/create.component';
     RegisterComponent,
     RecoverComponent,
     ContenidoHotelesComponent,
-    CreateComponent
+    DetallesComponent
   ],
   imports: [
     BrowserModule,
