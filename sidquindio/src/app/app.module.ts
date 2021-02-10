@@ -11,7 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { RecoverComponent } from './recover/recover.component';
 import { ContenidoHotelesComponent } from './contenido-hoteles/contenido-hoteles.component';
 import { DetallesComponent } from './detalles/detalles.component';
-
+=======
 
 @NgModule({
   declarations: [
