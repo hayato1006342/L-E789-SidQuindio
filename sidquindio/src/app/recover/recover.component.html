@@ -2,25 +2,30 @@
 <body >
     <div class="fondo" >
         <div class="wraaper">
-            <form class="row g-3" id="form-signin">
+            <form class="row g-3" id="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="col-12 text-center">
                     <h2>Recuparar Contraseña</h2>
                 </div>
                 <div class="col-12">
-                    <label for="inputAddress" class="form-label">Codigo</label>
-                    <input type="text" class="form-control">
+                    <label for="inputAddress"  class="form-label">Codigo</label>
+                    <input type="text" formControlName="codigo" class="form-control">
                   </div>
                 <div class="col-12">
-                  <label for="inputAddress2" class="form-label">Contraseña</label>
-                  <input type="password" class="form-control">
+                  <label for="inputAddress2"  class="form-label">Contraseña</label>
+                  <input type="password" formControlName="password" class="form-control">
                 </div>
                 <div class="col-12">
-                    <label for="inputAddress2" class="form-label">Confirmar Contraseña</label>
-                    <input type="password" class="form-control">
+                    <label for="inputAddress2"  class="form-label">Confirmar Contraseña</label>
+                    <input type="password" formControlName="validatepassword" class="form-control">
                   </div>
                 <div class="d-grid gap-2 col-6 mx-auto">
-                  <button type="submit" class="btn btn-lg btn-outline-primary btn-block" type="submit">Recuperar</button>
+                  <button type="submit"  *ngIf="spinner" class="btn btn-lg btn-outline-primary btn-block" type="submit">Recuperar</button>
                 </div>
+                <div *ngIf="!spinner"  class="d-flex justify-content-center">
+                  <div class="spinner-border text-primary" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                  </div>
+              </div>
               </form>
         </div>
     </div>

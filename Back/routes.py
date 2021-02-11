@@ -1,13 +1,9 @@
-from controllers import LoginUserControllers,RegisterUserControllers,RecoberyUserControllers,AdminControllers,AtractivosUserControllers
+from controllers import LoginUserControllers, RegistroUserControllers, RecuperacionUserControllers
+
 
 user = {
-    "Login_User": "/api/v01/login", "LoginUserController" : LoginUserControllers.as_view("login"),
-    "Register_User": "/api/v01/register", "RegisterUserController" : RegisterUserControllers.as_view("register"),
-    "Recobery_User": "/api/v01/recobery", "RecoberyUserController" : RecoberyUserControllers.as_view("recobery"),    
-    "Atractivos_User": "/api/v01/atractivos", "AtractivosUserController" : AtractivosUserControllers.as_view("rtractivos")
+    "login_user": "/api/v01/login", "login_user_controllers": LoginUserControllers.as_view("login_api"),
+    "registro_user": "/api/v01/registro", "registro_user_controllers": RegistroUserControllers.as_view("register_api"),
+    "recuperacion_user": "/api/v01/recuperacion", "recuperacion_user_controllers": RecuperacionUserControllers.as_view("recuperacion_api")
 }
-admin = {
-    "Admin": "/api/v01/admin", "AdminController" : AdminControllers.as_view("Admin")
-}
-
 

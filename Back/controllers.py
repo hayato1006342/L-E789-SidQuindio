@@ -1,49 +1,44 @@
+
 from flask.views import MethodView
 from flask import jsonify, request
 import time
 
-class LoginUserControllers(MethodView)
-    
+
+
+class LoginUserControllers(MethodView):
     def post(self):
         time.sleep(3)
-        pass
+        content = request.get_json()
+        email = content.get("email")
+        password = content.get("password")
+        return jsonify({"Ingreso Exitoso": True}), 200
 
 
-class RegisterUserControllers(MethodView)
-
-    def post(self)
+class RecuperacionUserControllers(MethodView):
+    def post(self):
         time.sleep(3)
-        pass
+        content = request.get_json()
+        codigo = content.get("codigo")
+        password = content.get("password")
+        password = content.get("validatepassword")
+        return jsonify({"": True}), 200
+        
 
-    def get(self)
+
+class RegistroUserControllers(MethodView):
+    def post(self):
         time.sleep(3)
+        content = request.get_json()
+        nombre = content.get("nombre")
+        email = content.get("email")
+        password = content.get("password")
+        validatepassword = content.get("validatepassword")
+
+        return jsonify({"Registro Exitoso": True}), 200
+    
+    def get():
         pass
-
-class RecoberyUserControllers(MethodView)
-
-    def post(self)
-        time.sleep(3)
+    
+    def put():
         pass
-
-    def get(self)
-        time.sleep(3)
-        pass
-class AdminControllers(MethodView)
-
-    def post(self)
-        time.sleep(3)
-        pass
-
-    def get(self)
-        time.sleep(3)
-        pass
-
-class AtractivosUserControllers(MethodView)
-
-    def post(self)
-        time.sleep(3)
-        pass
-
-    def get(self)
-        time.sleep(3)
-        pass
+     
