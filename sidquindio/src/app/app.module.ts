@@ -15,6 +15,7 @@ import { ContenidoHotelesComponent } from './contenido-hoteles/contenido-hoteles
 import { DetallesComponent } from './detalles/detalles.component';
 import { PanelAdminComponent } from './panel-admin/panel-admin.component';
 import { CreateComponent } from './create/create.component';
+import { HistorialCompraComponent } from './historial-compra/historial-compra.component';
 
 
 @NgModule({
@@ -29,14 +30,15 @@ import { CreateComponent } from './create/create.component';
     CreateComponent,
     ContenidoHotelesComponent,
     DetallesComponent,
-    PanelAdminComponent
+    PanelAdminComponent,
+    HistorialCompraComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

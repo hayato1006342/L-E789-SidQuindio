@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {environment} from '../../environments/environment'
 import { Router } from '@angular/router';
 
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -43,6 +45,7 @@ export class RegisterComponent implements OnInit {
       this.spinner = false;
       this.client.postRequest(`${environment.BASE_API_REGISTER}/registro`, data).subscribe(
       (response: any) => {
+        Swal.fire('Usted se a registrado exitosamente')
         this.route.navigate( ['/login']);
         console.log(response);
       },

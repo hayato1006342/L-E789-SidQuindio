@@ -2,32 +2,35 @@
 <body >
     <div class="fondo" >
         <div class="wraaper">
-          <form class="row g-3" id="form-signin">
+          <form class="row g-3" id="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="col-12 text-center ">
               <h2>Create</h2>
             </div>
             <div class="col-6">
               <label for="inputAddress" class="form-label">Nombre Lugar</label>
-              <input type="text" class="form-control">
+              <input type="text" formControlName="nombre" class="form-control">
             </div>
             <div class="mb-3">
               <label for="formFileMultiple" class="form-label">Selecione Las Imagenes</label>
-              <input class="form-control" type="file" id="formFileMultiple" multiple>
+              <input class="form-control" formControlName="seleccion">
             </div>
             <div class="col-6">
               <label for="inputAddress" class="form-label">Descripción</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+              <textarea class="form-control" formControlName="descripcion" id="exampleFormControlTextarea1" rows="5"></textarea>
             </div>
             <div class="col-6">
               <label for="inputAddress" class="form-label">Precios</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea class="form-control" formControlName="precios" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <div class="col-6">
               <label for="inputAddress" class="form-label">Video</label>
-              <input type="url" class="form-control">
+              <input type="url" formControlName="video" class="form-control">
           </div>
           <div class="col-6 xD">
-            <button type="submit" class="btn btn-lg btn-outline-primary" style="position: relative;left: 60%; width: 200px; top: 30px; height: 50px;">Crear</button>
+            <button type="submit" *ngIf="spinner" class="btn btn-lg btn-outline-primary" style="position: relative;left: 60%; width: 200px; top: 30px; height: 50px;">Crear</button>
+            <div *ngIf="!spinner" class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+          </div>
           </div>
           </form>
         </div>
