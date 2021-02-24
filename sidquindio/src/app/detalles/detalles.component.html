@@ -2,7 +2,7 @@
 <body >
     <div class="fondo" >
         <div class="wraaper">
-            <form class="row g-3" id="form-signin">
+            <form class="row g-3" id="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="col-12 text-center">
                     <h2>Panaca</h2>
                 </div>
@@ -41,14 +41,38 @@
                     <p>La principal filosofía de PANACA es propiciar la interacitividad del hombre con la naturaleza y la zoología doméstica. Es el primer parque temático agropecuario en el mundo, ofrece varios shows, estaciones temáticas y una colección de zoología doméstica. Se autodenomina como «Una gran finca», con 8 estaciones y más de 4 500 animales domésticos, el parque pretende que los visitantes conozcan las principales actividades del sector agropecuario y tradiciones del campo.</p>
                 </div>
                 <div class="col-6">
-                    <div class="dos">
-                        <h3>Precio: {{5000 | currency:"USD":true}}</h3>
-                        <h3>Precio: {{45000 | currency:"USD":true}}</h3>
-                        <h3>Precio: {{8655000 | currency:"USD":true}}</h3>
-                    </div>
+                    <table class="table table-danger table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Opción</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="radio" id="..." name="..." value="..."></td>
+                                <td>{{5000 | currency:"USD":true}}</td>
+                                <td><input type="number" formControlName="opcion1" id="..." name="..." min="0" max="50" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" id="..." name="..." value="..."></td>
+                                <td>{{45000 | currency:"USD":true}}</td>
+                                <td><input type="number" formControlName="opcion2" id="..." name="..." min="0" max="50" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" id="..." name="..." value="..."></td>
+                                <td>{{8655000 | currency:"USD":true}}</td>
+                                <td><input type="number" formControlName="opcion3" id="..." name="..." min="0" max="50" value="1"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="col-6 xd">
-                    <button type="submit" class="btn btn-success">Comprar</button>
+                    <button *ngIf="spinner" type="submit" class="btn btn-success">Comprar</button>
+                    <div *ngIf="!spinner" class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
                 </div>
             </form>
         </div>

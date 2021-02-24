@@ -7,11 +7,11 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 @Component({
-  selector: 'app-contenido-hoteles',
-  templateUrl: './contenido-hoteles.component.html',
-  styleUrls: ['./contenido-hoteles.component.css']
+  selector: 'app-historial-compra',
+  templateUrl: './historial-compra.component.html',
+  styleUrls: ['./historial-compra.component.css']
 })
-export class ContenidoHotelesComponent implements OnInit {
+export class HistorialCompraComponent implements OnInit {
 
   datos;
 
@@ -20,7 +20,7 @@ export class ContenidoHotelesComponent implements OnInit {
   ) { }
 
   traerInformacion(){
-    this.mostrar.getRequestAll(`${environment.BASE_API_REGISTER}/hoteles`).subscribe(
+    this.mostrar.getRequestAll(`${environment.BASE_API_REGISTER}/historial`).subscribe(
       (data): any => this.datos = data["datos"],
       error => console.log("Error al traer los datos")
     )

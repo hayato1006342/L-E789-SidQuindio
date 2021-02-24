@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {environment} from '../../environments/environment'
 import { Router } from '@angular/router';
 
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
 
 @Component({
   selector: 'app-login',
