@@ -27,6 +27,15 @@ export class DetallesComponent implements OnInit {
       opcion2: ['0', Validators.required],
       opcion3: ['0', Validators.required],
   })
+
+  this.client.getRequest(`${environment.BASE_API_REGISTER}/detalles`,localStorage.getItem('token')).subscribe(
+    (response: any) => {
+      console.log(response);
+    },(error) => {
+      console.log(error);
+      this.route.navigate(['/login'])
+    })
+
   }
   async onSubmit(){
 

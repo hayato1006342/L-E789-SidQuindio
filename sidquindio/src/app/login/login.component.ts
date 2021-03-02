@@ -2,6 +2,7 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ClientService } from '../client.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {environment} from '../../environments/environment'
+import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
 import Swal from 'sweetalert2/dist/sweetalert2.js'
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder, 
     private route: Router,
-    private client: ClientService) { }
+    private client: ClientService,
+    public auth: AuthService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -40,6 +42,12 @@ export class LoginComponent implements OnInit {
       this.spinner = false;
       this.client.postRequest(`${environment.BASE_API_REGISTER}/login`, data).subscribe(
       (response: any) => {
+        this.auth.login(response.token)
+        //se almacena el nombre del usuario en el almacenamiento de
+        //sesion
+        this.auth.setCourrentUser(response.nombre);
+
+        console.log(localStorage.getItem('token'));
         this.route.navigate( ['/']);
         console.log(response);
       },

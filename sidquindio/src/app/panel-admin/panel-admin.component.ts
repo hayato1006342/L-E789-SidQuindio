@@ -16,7 +16,9 @@ export class PanelAdminComponent implements OnInit {
   datos;
 
   constructor(
-    public mostrar:ClientService
+    public mostrar:ClientService,
+    private client: ClientService,
+    private route: Router,
   ) { }
 
   traerInformacion(){
@@ -28,7 +30,14 @@ export class PanelAdminComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.traerInformacion();
+    this.client.getRequest(`${environment.BASE_API_REGISTER}/historial`,localStorage.getItem('token')).subscribe(
+      (response: any) => {
+        this.traerInformacion();
+        console.log(response);
+      },(error) => {
+        console.log(error);
+        this.route.navigate(['/login'])
+      })
   }
 
 }
