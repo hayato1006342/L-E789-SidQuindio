@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +12,11 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RecoverComponent } from './recover/recover.component';
 import { ContenidoHotelesComponent } from './contenido-hoteles/contenido-hoteles.component';
+import { DetallesComponent } from './detalles/detalles.component';
+import { PanelAdminComponent } from './panel-admin/panel-admin.component';
+import { CreateComponent } from './create/create.component';
+import { HistorialCompraComponent } from './historial-compra/historial-compra.component';
+import { ComprasComponent } from './compras/compras.component';
 
 
 @NgModule({
@@ -21,11 +28,19 @@ import { ContenidoHotelesComponent } from './contenido-hoteles/contenido-hoteles
     LoginComponent,
     RegisterComponent,
     RecoverComponent,
-    ContenidoHotelesComponent
+    CreateComponent,
+    ContenidoHotelesComponent,
+    DetallesComponent,
+    PanelAdminComponent,
+    HistorialCompraComponent,
+    ComprasComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
