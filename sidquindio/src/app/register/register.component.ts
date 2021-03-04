@@ -38,15 +38,22 @@ export class RegisterComponent implements OnInit {
         nombre: this.form.value.nombre,
         email: this.form.value.email,
         password: this.form.value.password,
-        validatepassword: this.form.value.password
+        validatepassword: this.form.value.validatepassword
       }
 
       console.log(data);
       this.spinner = false;
       this.client.postRequest(`${environment.BASE_API_REGISTER}/registro`, data).subscribe(
       (response: any) => {
-        Swal.fire('Usted se a registrado exitosamente')
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registro exitoso',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.route.navigate( ['/login']);
+
         console.log(response);
       },
       (error) => {

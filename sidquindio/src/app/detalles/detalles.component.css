@@ -57,3 +57,25 @@ button{
     width: 140px;
     height: 50px;
 }
+
+#precio2 {
+    border: 0px;
+    background-color: #F8D7DA;
+}
+#precio1 {
+    border: 0px;
+    background-color: #ECCCCF;
+}
+#precio3 {
+    border: 0px;
+    background-color: #ECCCCF;
+}
+#hio {
+    background-color: #F8D7DA;
+}
+#hi {
+    background-color: #ECCCCF;
+}
+#hoi {
+    background-color: #ECCCCF;
+}

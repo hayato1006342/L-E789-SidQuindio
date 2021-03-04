@@ -16,6 +16,7 @@ import { DetallesComponent } from './detalles/detalles.component';
 import { PanelAdminComponent } from './panel-admin/panel-admin.component';
 import { CreateComponent } from './create/create.component';
 import { HistorialCompraComponent } from './historial-compra/historial-compra.component';
+import { ComprasComponent } from './compras/compras.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { HistorialCompraComponent } from './historial-compra/historial-compra.co
     ContenidoHotelesComponent,
     DetallesComponent,
     PanelAdminComponent,
-    HistorialCompraComponent
+    HistorialCompraComponent,
+    ComprasComponent
   ],
   imports: [
     BrowserModule,
