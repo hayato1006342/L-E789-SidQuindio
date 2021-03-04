@@ -3,8 +3,10 @@ import { ClientService } from '../client.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {environment} from '../../environments/environment'
 import { Router } from '@angular/router';
+import { BuyService } from '../buy.service';
 
 import Swal from 'sweetalert2/dist/sweetalert2.js'
+
 
 @Component({
   selector: 'app-detalles',
@@ -16,17 +18,26 @@ export class DetallesComponent implements OnInit {
   form: FormGroup;
   spinner: boolean = true;
 
+
+  precio1:number = 55000;
+  precio2:number = 45000;
+  precio3:number = 95000;
+  
   constructor(    
     private fb: FormBuilder, 
     private route: Router,
-    private client: ClientService) { }
+    private client: ClientService,
+    private buy: BuyService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      opcion1: ['0', Validators.required],
-      opcion2: ['0', Validators.required],
-      opcion3: ['0', Validators.required],
-  })
+      op1: ['0', Validators.required],
+      op2: [ this.precio1, Validators.required],
+      op3: [ 0, Validators.required],
+  });
+
+
+  
 
   this.client.getRequest(`${environment.BASE_API_REGISTER}/detalles`,localStorage.getItem('token')).subscribe(
     (response: any) => {
@@ -37,15 +48,17 @@ export class DetallesComponent implements OnInit {
     })
 
   }
+
+
   async onSubmit(){
 
     if (this.form.valid){
       let data ={
-        opcion1: this.form.value.opcion1,
-        opcion2: this.form.value.opcion2,
-        opcion3: this.form.value.opcion3,
+        opcion1: this.form.value.op1,
+        opcion2: this.form.value.op2,
+        opcion3: this.form.value.op3
       }
-
+      this.buy.RecibirInformacion(data);
       console.log(data);
       Swal.fire({
         title: 'Seguro?',
@@ -66,7 +79,7 @@ export class DetallesComponent implements OnInit {
           this.spinner = false;
           this.client.postRequest(`${environment.BASE_API_REGISTER}/detalles`, data).subscribe(
             (response: any) => {
-              this.route.navigate( ['/historial']);
+              this.route.navigate( ['/compras']);
               console.log(response);
             },
             (error) => {

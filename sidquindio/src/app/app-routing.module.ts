@@ -10,6 +10,7 @@ import { DetallesComponent } from './detalles/detalles.component';
 import { PanelAdminComponent } from './panel-admin/panel-admin.component';
 import { CreateComponent } from './create/create.component';
 import { HistorialCompraComponent } from './historial-compra/historial-compra.component';
+import { ComprasComponent } from './compras/compras.component';
 
 const routes: Routes = [
   {path:'', component: ContenidoComponent},
@@ -20,8 +21,8 @@ const routes: Routes = [
   {path:'detalles', component: DetallesComponent},
   {path:'crear', component: CreateComponent},
   {path:'paneladmin', component: PanelAdminComponent},
-  {path:'historial', component: HistorialCompraComponent}
-
+  {path:'historial', component: HistorialCompraComponent},
+  {path:'compras', component: ComprasComponent}
 ];
 
 

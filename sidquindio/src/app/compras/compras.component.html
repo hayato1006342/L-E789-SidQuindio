@@ -1,0 +1,45 @@
+<app-nav></app-nav>
+<body >
+    <div class="fondo" >
+        <div class="wraaper">
+            <form class="row g-3" id="form-signin">
+                <div class="col-12 text-center">
+                    <h2>Compra</h2>
+                </div>
+                <div class="col-12 text-center fluid">
+                    <img width="400" height="400" class="img-fluid" src="https://cloudfront-us-east-1.images.arcpublishing.com/semana/KI7KEOLLBFCODCQNSSITZQG4LE.jpeg" alt="Fort">
+                </div>
+                <div class="col-6 fluid ">
+                  <label for="inputAddress " class="form-label">Site</label>
+                  <input class="form-control" value="Panaca" disabled="">
+                </div>
+                <div class="col-6 fluid">
+                  <label for="inputAddress" class="form-label">Locate</label>
+                  <input class="form-control" value="Quimbaya, Quindío" disabled="">
+                </div>
+                <div class="col-6 fluid">
+                  <label for="inputAddress2" class="form-label">Ticket</label>
+                  <input class="form-control" value="Ticket 01" disabled="">
+                </div>
+                <div class="col-6 fluid">
+                  <label for="inputAddress2" class="form-label">Cantidad</label>
+                  <input class="form-control" value="{{data.opcion3}}" disabled="">
+                </div>
+                <div class="col-6 fluid">
+                  <label for="inputAddress2" class="form-label">Valor</label>
+                  <input class="form-control" value="{{data.opcion2 * data.opcion3}}" disabled="">
+                </div>
+                <div class="col-6 fluid">
+                  <label for="inputAddress2" class="form-label">Fecha Expiracion</label>
+                  <input type="date" class="form-control" value="2021-03-20" disabled="">
+                </div>
+                <div class="col-6 fluid">
+                  <button type="submit" class="btn btn-outline-success">Finalizar Comprar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+
+

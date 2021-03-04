@@ -1,4 +1,5 @@
 <app-nav></app-nav>
+
 <body >
     <div class="fondo" >
         <div class="wraaper">
@@ -51,19 +52,19 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><input type="radio" id="..." name="..." value="..."></td>
-                                <td>{{5000 | currency:"USD":true}}</td>
-                                <td><input type="number" formControlName="opcion1" id="..." name="..." min="0" max="50" value="1"></td>
+                                <td><input type="radio" formControlName="op1"  value="op1"></td>
+                                <td><input type="number" id="precio1" formControlName="op2" value="{{precio1 | currency:'USD'}}" readonly></td>
+                                <td><input type="number" formControlName="op3" id="hoi" name="..." min="0" max="50" value="0"></td>
                             </tr>
                             <tr>
                                 <td><input type="radio" id="..." name="..." value="..."></td>
-                                <td>{{45000 | currency:"USD":true}}</td>
-                                <td><input type="number" formControlName="opcion2" id="..." name="..." min="0" max="50" value="1"></td>
+                                <td><input type="number" id="precio2" value="{{precio2 | currency:'USD'}}" type="text" readonly></td>
+                                <td><input type="number" formControlName="opcion2" id="hio" name="..." min="0" max="50" value="0"></td>
                             </tr>
                             <tr>
                                 <td><input type="radio" id="..." name="..." value="..."></td>
-                                <td>{{8655000 | currency:"USD":true}}</td>
-                                <td><input type="number" formControlName="opcion3" id="..." name="..." min="0" max="50" value="1"></td>
+                                <td><input type="number" id="precio3" value="{{precio3 | currency:'USD'}}" type="text" readonly></td>
+                                <td><input type="number" formControlName="opcion3" id="hi" name="..." min="0" max="50" value="0"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -78,4 +79,5 @@
         </div>
     </div>
 </body>
+
 <app-footer></app-footer>
