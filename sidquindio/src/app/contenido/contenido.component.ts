@@ -20,8 +20,8 @@ export class ContenidoComponent implements OnInit {
   ) { }
 
   traerInformacion(){
-    this.mostrar.getRequestAll(`${environment.BASE_API_REGISTER}/atractivos`).subscribe(
-      (data): any => this.datos = data["datos"],
+    this.mostrar.getRequestAll(`${environment.BASE_API_REGISTER}/sites`).subscribe(
+      (data): any => this.datos = data,
       error => console.log("Error al traer los datos")
     )
   }
