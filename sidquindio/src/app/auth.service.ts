@@ -8,9 +8,11 @@ export class AuthService {
 
   isLogin = new BehaviorSubject<boolean>(this.checkToken())
 
+
   private checkToken() : boolean {
     return !!localStorage.getItem('token');
   }
+
 
 
   setCourrentUser(user:string) : void {

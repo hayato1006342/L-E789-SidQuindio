@@ -44,4 +44,16 @@ export class ClientService {
     config["header"] = header;
     return this.http.get(route, config);
   }
+
+  getRequestId (route: string, id: number) {
+    let config:any = {
+      responseType: "json"
+    }
+    const params =  new HttpParams().set('id', `${id}`);
+    config["params"] = params;
+  
+    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
+    config["header"] = header;
+    return  this.http.get(route, config);
+  }
 }

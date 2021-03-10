@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../client.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute , ParamMap } from '@angular/router';
+import { HttpClient,HttpParams } from '@angular/common/http';
 import {environment} from '../../environments/environment'
 import { Router } from '@angular/router';
 import { BuyService } from '../buy.service';
+import { AuthService } from '../auth.service';
 
 import Swal from 'sweetalert2/dist/sweetalert2.js'
+import { async } from '@angular/core/testing';
 
 
 @Component({
@@ -15,6 +19,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 })
 export class DetallesComponent implements OnInit {
 
+  datos
   form: FormGroup;
   spinner: boolean = true;
 
@@ -27,7 +32,9 @@ export class DetallesComponent implements OnInit {
     private fb: FormBuilder, 
     private route: Router,
     private client: ClientService,
-    private buy: BuyService) { }
+    public auth : AuthService,
+    private buy: BuyService,
+    private routes : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -36,19 +43,32 @@ export class DetallesComponent implements OnInit {
       op3: [ 0, Validators.required],
   });
 
+  this.routes.paramMap
+      .subscribe((params : ParamMap) => {
+      let id = + params.get('id');
+      this.traerDatos(id);
+    });
 
-  
 
   this.client.getRequest(`${environment.BASE_API_REGISTER}/detalles`,localStorage.getItem('token')).subscribe(
     (response: any) => {
-      console.log(response);
+      console.log(response)
     },(error) => {
       console.log(error);
-      this.route.navigate(['/login'])
+      this.auth.logout()
     })
 
   }
 
+  async traerDatos(id:number){
+    this.client.getRequestId(`${environment.BASE_API_REGISTER}/detalles`,id).subscribe(
+      (response:any) =>{
+        console.log(response)
+      },(error)=>{
+        console.log("Ah ocurrido un error")
+      }
+    );
+  }
 
   async onSubmit(){
 
