@@ -1,3 +1,93 @@
 <app-nav></app-nav>
 
+<body >
+    <div id="fondo">
+        <div class="wraaper">
+            <div id="form-signin">
+            <div *ngFor="let i of datos">
+                <div  class="col-12 text-center">
+                    <h2>{{i.name}}</h2>
+                </div>
+            
+                <div class="col-12">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                            <img id="imagenes" src="{{i.img1}}" class="d-block w-100 img-fluid" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img id="imagenes" src="{{i.img2}}" class="d-block w-100 img-fluid" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img id="imagenes" src="{{i.img3}}" class="d-block w-100 img-fluid" alt="...">
+                        </div> 
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </a>
+                    </div>                
+                </div>
+                <br>
+                <div class="col-12">
+                    <p> {{i.description}}</p>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <form class="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()" >
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Opción</th>
+                                            <th scope="col">Precio</th>
+                                            <th scope="col">Cantidad</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                <th><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked (change)="cantidad1 = true" (change)="cantidad2 = false" (change)="cantidad3 = false"></th>
+                                                <td><input type="text" id="precio3" formControlName="op1" value="{{precio1 | currency:'USD'}}" readonly></td>
+                                                <td><div *ngIf="cantidad1"><input type="number" form ControlName="opcion1" id="..." min="1" max="50"  value="1"></div></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" (change)="cantidad2 = true" (change)="cantidad1 = false" (change)="cantidad3 = false"></td>
+                                                <td><input type="text" id="precio2" formControlName="op2" value="{{precio2 | currency:'USD'}}" readonly></td>
+                                                <td><div *ngIf="cantidad2"><input type="number" form ControlName="opcion2" id="..." name="..." min="1" max="50" value="1"></div></td>
+                                            </tr> 
+                                            <tr>
+                                                <td><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" (change)="cantidad3 = true" (change)="cantidad1 = false" (change)="cantidad2 = false"></td>
+                                                <td><input type="text" id="precio3" formControlName="op3" value="{{precio3 | currency:'USD'}}" readonly></td>
+                                                <td><div *ngIf="cantidad3"><input type="number" form ControlName="opcion3" id="..." name="..." min="1" max="50" value="1"></div></td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                        <div class="col col-lg-4">
+                            <button *ngIf="spinner" type="submit" class="btn btn-success">Comprar</button>
+                            <div *ngIf="!spinner" class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+
 <app-footer></app-footer>

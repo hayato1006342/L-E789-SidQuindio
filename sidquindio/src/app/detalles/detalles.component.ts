@@ -19,14 +19,18 @@ import { async } from '@angular/core/testing';
 })
 export class DetallesComponent implements OnInit {
 
-  datos
+  public precio1:number = 5000;
+  public precio2:number = 45000;
+  public precio3:number = 95000;
+  public cantidad1:boolean = true;
+  public cantidad2:boolean = false;
+  public cantidad3:boolean = false;
+
+
+  datos;
   form: FormGroup;
   spinner: boolean = true;
 
-
-  precio1:number = 55000;
-  precio2:number = 45000;
-  precio3:number = 95000;
   
   constructor(    
     private fb: FormBuilder, 
@@ -38,9 +42,9 @@ export class DetallesComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      op1: ['0', Validators.required],
-      op2: [ this.precio1, Validators.required],
-      op3: [ 0, Validators.required],
+      op1: [ 0, Validators.required],
+      precio: [ 0, Validators.required],
+      cantidad: [ 0, Validators.required],
   });
 
   this.routes.paramMap
@@ -61,9 +65,9 @@ export class DetallesComponent implements OnInit {
   }
 
   async traerDatos(id:number){
-    this.client.getRequestId(`${environment.BASE_API_REGISTER}/detalles`,id).subscribe(
-      (response:any) =>{
-        console.log(response)
+    this.client.getRequestId(`${environment.BASE_API_REGISTER}/detalless/` + id).subscribe(
+      (data): any =>{
+        this.datos = data
       },(error)=>{
         console.log("Ah ocurrido un error")
       }

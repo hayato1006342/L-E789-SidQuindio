@@ -17,6 +17,7 @@ import { PanelAdminComponent } from './panel-admin/panel-admin.component';
 import { CreateComponent } from './create/create.component';
 import { HistorialCompraComponent } from './historial-compra/historial-compra.component';
 import { ComprasComponent } from './compras/compras.component';
+import { DetailsComponent } from './details/details.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ComprasComponent } from './compras/compras.component';
     DetallesComponent,
     PanelAdminComponent,
     HistorialCompraComponent,
-    ComprasComponent
+    ComprasComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
