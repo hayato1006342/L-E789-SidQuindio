@@ -43,8 +43,6 @@ export class LoginComponent implements OnInit {
       this.client.postRequest(`${environment.BASE_API_REGISTER}/login`, data).subscribe(
       (response: any) => {
         this.auth.login(response.token)
-        //se almacena el nombre del usuario en el almacenamiento de
-        //sesion
         this.auth.setCourrentUser(response.nombre);
 
         console.log(localStorage.getItem('token'));

@@ -11,6 +11,9 @@ import { PanelAdminComponent } from './panel-admin/panel-admin.component';
 import { CreateComponent } from './create/create.component';
 import { HistorialCompraComponent } from './historial-compra/historial-compra.component';
 import { ComprasComponent } from './compras/compras.component';
+import { DetailsComponent} from './details/details.component';
+
+import {DetallesGuard} from './guards/detalles.guard';
 
 const routes: Routes = [
   {path:'', component: ContenidoComponent},
@@ -18,11 +21,12 @@ const routes: Routes = [
   {path:'registro', component: RegisterComponent},
   {path:'recover', component: RecoverComponent},
   {path:'hoteles', component: ContenidoHotelesComponent},
-  {path:'detalles', component: DetallesComponent},
+  {path:'detalles/:id', component: DetallesComponent, canActivate: [DetallesGuard]},
   {path:'crear', component: CreateComponent},
   {path:'paneladmin', component: PanelAdminComponent},
   {path:'historial', component: HistorialCompraComponent},
-  {path:'compras', component: ComprasComponent}
+  {path:'compras', component: ComprasComponent},
+  {path:'details', component: DetailsComponent}
 ];
 
 

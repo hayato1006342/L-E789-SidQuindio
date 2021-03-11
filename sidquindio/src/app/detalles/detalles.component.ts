@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../client.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute , ParamMap } from '@angular/router';
+import { HttpClient,HttpParams } from '@angular/common/http';
 import {environment} from '../../environments/environment'
 import { Router } from '@angular/router';
 import { BuyService } from '../buy.service';
+import { AuthService } from '../auth.service';
 
 import Swal from 'sweetalert2/dist/sweetalert2.js'
+import { async } from '@angular/core/testing';
 
 
 @Component({
@@ -15,40 +19,60 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 })
 export class DetallesComponent implements OnInit {
 
+  public precio1:number = 5000;
+  public precio2:number = 45000;
+  public precio3:number = 95000;
+  public cantidad1:boolean = true;
+  public cantidad2:boolean = false;
+  public cantidad3:boolean = false;
+
+
+  datos;
   form: FormGroup;
   spinner: boolean = true;
 
-
-  precio1:number = 55000;
-  precio2:number = 45000;
-  precio3:number = 95000;
   
   constructor(    
     private fb: FormBuilder, 
     private route: Router,
     private client: ClientService,
-    private buy: BuyService) { }
+    public auth : AuthService,
+    private buy: BuyService,
+    private routes : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      op1: ['0', Validators.required],
-      op2: [ this.precio1, Validators.required],
-      op3: [ 0, Validators.required],
+      op1: [ 0, Validators.required],
+      precio: [ 0, Validators.required],
+      cantidad: [ 0, Validators.required],
   });
 
+  this.routes.paramMap
+      .subscribe((params : ParamMap) => {
+      let id = + params.get('id');
+      this.traerDatos(id);
+    });
 
-  
 
   this.client.getRequest(`${environment.BASE_API_REGISTER}/detalles`,localStorage.getItem('token')).subscribe(
     (response: any) => {
-      console.log(response);
+      console.log(response)
     },(error) => {
       console.log(error);
-      this.route.navigate(['/login'])
+      this.auth.logout()
     })
 
   }
 
+  async traerDatos(id:number){
+    this.client.getRequestId(`${environment.BASE_API_REGISTER}/detalless/` + id).subscribe(
+      (data): any =>{
+        this.datos = data
+      },(error)=>{
+        console.log("Ah ocurrido un error")
+      }
+    );
+  }
 
   async onSubmit(){
 
