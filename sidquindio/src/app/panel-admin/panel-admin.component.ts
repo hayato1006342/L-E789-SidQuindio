@@ -21,23 +21,24 @@ export class PanelAdminComponent implements OnInit {
     private route: Router,
   ) { }
 
-  traerInformacion(){
+  async traerInformacion(){
     this.mostrar.getRequestAll(`${environment.BASE_API_REGISTER}/panel`).subscribe(
-      (data): any => this.datos = data["datos"],
+      (data): any => this.datos = data,
       error => console.log("Error al traer los datos")
     )
   }
 
-
   ngOnInit(): void {
     this.client.getRequest(`${environment.BASE_API_REGISTER}/historial`,localStorage.getItem('token')).subscribe(
       (response: any) => {
-        this.traerInformacion();
         console.log(response);
       },(error) => {
         console.log(error);
         this.route.navigate(['/login'])
-      })
+      });
+
+      this.traerInformacion();
   }
+
 
 }

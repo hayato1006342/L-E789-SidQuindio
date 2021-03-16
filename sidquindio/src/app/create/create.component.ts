@@ -24,27 +24,37 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      nombre: ['', Validators.required],
-      seleccion: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      precios: ['', Validators.required],
-      video: ['', Validators.required],
+      name: ['', Validators.required],
+      type: ['', Validators.required],
+      img: ['', Validators.required],
+      imgc1: ['', Validators.required],
+      imgc2: ['', Validators.required],
+      imgc3: ['', Validators.required],
+      prices: ['', Validators.required],
+      category: ['', Validators.required],
+      locate: ['', Validators.required],
+      description: ['', Validators.required]
   })
   }
 
   async onSubmit(){
     if (this.form.valid){
       let data ={
-        nombre: this.form.value.nombre,
-        seleccion: this.form.value.seleccion,
-        descripcion: this.form.value.descripcion,
-        precios: this.form.value.precios,
-        video: this.form.value.videos
+        name: this.form.value.name,
+        type: this.form.value.type,
+        img: this.form.value.img,
+        imgc1: this.form.value.imgc1,
+        imgc2: this.form.value.imgc2,
+        imgc3: this.form.value.imgc3,
+        prices: this.form.value.prices,
+        category: this.form.value.category,
+        locate: this.form.value.locate,
+        description: this.form.value.description
       };
       console.log(data);
       Swal.fire({
-        title: 'Seguro?',
-        text: "Esta seguro que desea ingresar un nuevo sitio",
+        title: '???',
+        text: "",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
