@@ -26,6 +26,7 @@ button{
     position: relative;
     margin-left: 30%;
     top: 40%;
+    margin-bottom: 30px;
 }
 
 #ubicacion {

@@ -1,37 +1,38 @@
 <app-nav></app-nav>
-<body >
+
+  <body >
     <div class="fondo" >
         <div class="wraaper">
-            <form class="row g-3" id="form-signin">
+            <form class="row g-3" id="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="col-12 text-center">
                     <h2>Compra</h2>
                 </div>
                 <div class="col-12 text-center fluid">
-                    <img width="400" height="400" class="img-fluid" src="https://cloudfront-us-east-1.images.arcpublishing.com/semana/KI7KEOLLBFCODCQNSSITZQG4LE.jpeg" alt="Fort">
+                    <img width="400" height="400" class="img-fluid" src="{{data['name'][0].img1}}" alt="Img">
                 </div>
                 <div class="col-6 fluid ">
                   <label for="inputAddress " class="form-label">Site</label>
-                  <input class="form-control" value="Panaca" disabled="">
+                  <input class="form-control" formControlName="name">
                 </div>
                 <div class="col-6 fluid">
                   <label for="inputAddress" class="form-label">Locate</label>
-                  <input class="form-control" value="Quimbaya, Quindío" disabled="">
+                  <input class="form-control" formControlName="locate" >
                 </div>
                 <div class="col-6 fluid">
                   <label for="inputAddress2" class="form-label">Ticket</label>
-                  <input class="form-control" value="Ticket 01" disabled="">
+                  <input class="form-control" formControlName="code" value="{{code}}" >
                 </div>
                 <div class="col-6 fluid">
                   <label for="inputAddress2" class="form-label">Cantidad</label>
-                  <input class="form-control" value="{{data.opcion3}}" disabled="">
+                  <input class="form-control" formControlName="amount">
                 </div>
                 <div class="col-6 fluid">
                   <label for="inputAddress2" class="form-label">Valor</label>
-                  <input class="form-control" value="{{data.opcion2 * data.opcion3}}" disabled="">
+                  <input class="form-control" formControlName="value">
                 </div>
-                <div class="col-6 fluid">
+                <div class="col-6 fluid" >
                   <label for="inputAddress2" class="form-label">Fecha Expiracion</label>
-                  <input type="date" class="form-control" value="2021-03-20" disabled="">
+                  <input type="date" class="form-control" formControlName="date" >
                 </div>
                 <div class="col-6 fluid">
                   <button type="submit" class="btn btn-outline-success">Finalizar Comprar</button>
@@ -40,6 +41,5 @@
         </div>
     </div>
 </body>
+
 <app-footer></app-footer>
-
-

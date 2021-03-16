@@ -7,16 +7,13 @@ html,body
 {
     background-image: url(https://wallpapercave.com/wp/wp3172264.jpg);
     width: 100%;
-    height: 100%;
+    height: 130%;
     position: absolute;
-    
 }
-
 .wraaper
 {
     margin: 80px;
 }
-
 #form-signin
 {
     max-width: 3080px;
@@ -30,13 +27,24 @@ html,body
 {
     width: 50%;
 }
-
 .col-6 button
 {
     position: relative;right: auto;
 }
-
 .xD
 {
     position: relative;right: auto;
+}
+.Op
+{
+    max-width: 380px;
+    margin-left: 15px;
+}
+.gg
+{
+    margin-top: 30px;
+}
+.ut
+{
+    bottom: unset;
 }
