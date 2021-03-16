@@ -1,8 +1,9 @@
 <app-nav></app-nav>
-
+​
 <body >
-    <div id="fondo">
-        <div class="wraaper">
+    <form class="form-signin"  [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="wraaper">
+        <div id="fondo">
             <div id="form-signin">
             <div *ngFor="let i of datos">
                 <div  class="col-12 text-center">
@@ -42,52 +43,79 @@
                     <p> {{i.description}}</p>
                 </div>
                 <br>
-                <br>
-                <br>
+                
                 <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <form class="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()" >
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Opción</th>
-                                            <th scope="col">Precio</th>
-                                            <th scope="col">Cantidad</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                            <tr>
-                                                <th><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked (change)="cantidad1 = true" (change)="cantidad2 = false" (change)="cantidad3 = false"></th>
-                                                <td><input type="text" id="precio3" formControlName="op1" value="{{precio1 | currency:'USD'}}" readonly></td>
-                                                <td><div *ngIf="cantidad1"><input type="number" form ControlName="opcion1" id="..." min="1" max="50"  value="1"></div></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" (change)="cantidad2 = true" (change)="cantidad1 = false" (change)="cantidad3 = false"></td>
-                                                <td><input type="text" id="precio2" formControlName="op2" value="{{precio2 | currency:'USD'}}" readonly></td>
-                                                <td><div *ngIf="cantidad2"><input type="number" form ControlName="opcion2" id="..." name="..." min="1" max="50" value="1"></div></td>
-                                            </tr> 
-                                            <tr>
-                                                <td><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" (change)="cantidad3 = true" (change)="cantidad1 = false" (change)="cantidad2 = false"></td>
-                                                <td><input type="text" id="precio3" formControlName="op3" value="{{precio3 | currency:'USD'}}" readonly></td>
-                                                <td><div *ngIf="cantidad3"><input type="number" form ControlName="opcion3" id="..." name="..." min="1" max="50" value="1"></div></td>
-                                            </tr>
-                                    </tbody>
-                                </table>
-                            </form>
-                        </div>
-                        <div class="col col-lg-4">
-                            <button *ngIf="spinner" type="submit" class="btn btn-success">Comprar</button>
-                            <div *ngIf="!spinner" class="spinner-border text-primary" role="status">
-                                <span class="visually-hidden">Loading...</span>
+                    <div class="form-check">
+                        <div class="row justify-content-md-center">
+                            <div class="col col-lg-3">
+                                <h2>Opción</h2>
+                            </div>
+                            <div class="col col-lg-3">
+                                <h2>Precio</h2>
+                            </div>
+                            <div class="col col-lg-2">
+                                <h2>Cantidad</h2>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                    
+                        <div class="form-check">
+                            <hr>
+                            <div class="row justify-content-md-center">
+                                <div class="col col-lg-2">
+                                    <input class="form-check-input" type="radio"  formControlName="opcion" id="exampleRadios1" value="{{precio1}}" checked (change)="cantidad1 = true" (change)="cantidad2 = false" (change)="cantidad3 = false">
+                                </div>
+                                <div class="col col-lg-4">
+                                    <input class="form-check-input2" type="text" id="precio1"  value="{{precio1 | currency:'USD'}}" readonly>
+                                </div>
+                                <div class="col col-lg-1">
+                                    <div *ngIf="cantidad1"><input class="form-check-input3" type="number" formControlName="cantidad"  min="1" max="50"  value="1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <hr>
+                            <div class="row justify-content-md-center">
+                                <div class="col col-lg-2">
+                                    <input class="form-check-input" type="radio"  formControlName="opcion" id="exampleRadios2" value="{{precio2}}" (change)="cantidad2 = true" (change)="cantidad1 = false" (change)="cantidad3 = false">
+                                </div>
+                                <div class="col col-lg-4">
+                                    <input class="form-check-input2" type="text" id="precio2"  value="{{precio2 | currency:'USD'}}" readonly>
+                                </div>
+                                <div class="col col-lg-1">
+                                    <div *ngIf="cantidad2"><input class="form-check-input3" type="number" formControlName="cantidad"  min="1" max="50" value="1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <hr>
+                            <div class="row justify-content-md-center">
+                                <div class="col col-lg-2">
+                                    <input class="form-check-input" type="radio"  id="exampleRadios3" formControlName="opcion" value="{{precio3}}" (change)="cantidad3 = true" (change)="cantidad1 = false" (change)="cantidad2 = false">
+                                </div>
+                                <div class="col col-lg-4">
+                                    <input class="form-check-input2" type="text" id="precio3"  value="{{precio3 | currency:'USD'}}" readonly>
+                                </div>
+                                <div class="col col-lg-1">
+                                    <div *ngIf="cantidad3"><input class="form-check-input3" type="number"  formControlName="cantidad" min="1" max="50" value="1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-md-center">
+                            <div class="col-lg-3">
+                                <br>
+                                <button *ngIf="spinner" type="submit" class="btn btn-success">Comprar</button>
+                                <div *ngIf="!spinner" class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div> 
         </div>
         </div>
     </div>
+    </form>
 </body>
-
 <app-footer></app-footer>
