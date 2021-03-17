@@ -26,18 +26,77 @@
           
         </div>
       </div>   
-      <!-- Sidebar Widgets Column -->
       <div class="col-md-4">
-        <!-- Search Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Precio</h5>
           <div class="card-body">
-            <div class="input-group">
-              <form>
-                <input type="range" name="range" step="50000" min="100000" max="2000000" value="" onchange="rangePrimary.value=value">
-                <input type="text" id="rangePrimary" style="border: 0;"/>
-                <button type="submit" class="btn btn-primary">Buscar</button>
-              </form>
+            <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <input class="form-control form-control-dark w-100" type="text" placeholder="Busca" aria-label="Search">
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <button type="button" class="btn btn-outline-success">Buscar</button>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="card my-4">
+          <h5 class="card-header">Lugares</h5>
+          <div class="card-body">
+            <div class="row">
+              <form [formGroup]="formlug" (ngSubmit)="onSubmit()" >
+              <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <div class="form-check">
+                        <input class="form-check-input"  formControlName="name"  name="name" type="radio" value="1" id="exampleRadios1">
+                        <label  class="form-check-label" for="exampleRadios1">
+                          Armenia
+                        </label>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="name"  name="name" id="exampleRadios2" value="2">
+                        <label class="form-check-label" for="exampleRadios2">
+                          Pereira
+                        </label>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio"  formControlName="name"  name="name" id="exampleRadios3" value="3" >
+                        <label class="form-check-label" for="exampleRadios3">
+                          Salento
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">Parques Culturales</a>
+                  </li>
+                  <li>
+                    <a href="#"></a>
+                  </li>
+                  <li>
+                    <a href="#"></a>
+                  </li>
+                </ul>
+              </div>
+              <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
             </div>
           </div>
         </div>
@@ -49,13 +108,28 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="#">Balsaje</a>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios12" value="option1" checked>
+                      <label class="form-check-label" for="exampleRadios12">
+                        Balsaje
+                      </label>
+                    </div>
                   </li>
                   <li>
-                    <a href="#">Recorido</a>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios13" value="option3">
+                      <label class="form-check-label" for="exampleRadios13">
+                        Recorido
+                      </label>
+                    </div>
                   </li>
                   <li>
-                    <a href="#">Parques tematicos</a>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios14" value="option3">
+                      <label class="form-check-label" for="exampleRadios14">
+                        Parques_tematicos
+                      </label>
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -72,6 +146,7 @@
                   </li>
                 </ul>
               </div>
+              <button type="button" class="btn btn-primary">Buscar</button>
             </div>
           </div>
         </div>
