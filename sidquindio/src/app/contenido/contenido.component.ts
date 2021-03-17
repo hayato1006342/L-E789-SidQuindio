@@ -14,9 +14,13 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 export class ContenidoComponent implements OnInit {
 
   datos;
+  formlug: FormGroup;
 
   constructor(
-    public mostrar:ClientService
+    public mostrar:ClientService,
+    private fb: FormBuilder, 
+    private route: Router,
+    private client: ClientService
   ) { }
 
   traerInformacion(){
@@ -29,6 +33,24 @@ export class ContenidoComponent implements OnInit {
 
   ngOnInit(): void {
     this.traerInformacion();
+    this.formlug = this.fb.group({
+      name: [ ,Validators.required],
+  })
   }
+  
 
+  async onSubmit(){
+    if (this.formlug.valid){
+      let data ={
+          name: this.formlug.value.name,
+      };
+      this.client.postRequest(`${environment.BASE_API_REGISTER}/search`, data).subscribe(
+        (data : any)=> {
+          this.datos = data
+          console.log(data)
+        },(error) => {
+          console.log("Error", error);
+        }
+     )};
+  }
 }
