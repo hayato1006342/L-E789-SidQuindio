@@ -11,9 +11,8 @@ export class NavComponent implements OnInit {
   constructor(public auth: AuthService) { }
 
   
-
   ngOnInit(): void {
-
+    this.auth.confirmarRango();
   }
 
 }

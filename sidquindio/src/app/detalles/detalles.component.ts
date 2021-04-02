@@ -45,6 +45,7 @@ export class DetallesComponent implements OnInit {
       cantidad: [ 1, Validators.required]
     });
 
+
   this.routes.paramMap
       .subscribe((params : ParamMap) => {
       let id = + params.get('id');
@@ -52,7 +53,7 @@ export class DetallesComponent implements OnInit {
     });
 
 
-  this.client.getRequest(`${environment.BASE_API_REGISTER}/detalles`,localStorage.getItem('token')).subscribe(
+  this.client.getRequest(`${environment.BASE_API_REGISTER}/authorization`,localStorage.getItem('token')).subscribe(
     (response: any) => {
       console.log(response)
     },(error) => {
@@ -63,7 +64,7 @@ export class DetallesComponent implements OnInit {
   }
 
   async traerDatos(id:number){
-    this.client.getRequestId(`${environment.BASE_API_REGISTER}/detalless/` + id).subscribe(
+    this.client.getRequestId(`${environment.BASE_API_REGISTER}/details/` + id).subscribe(
       (data): any =>{
         this.datos = data;
       },(error)=>{
