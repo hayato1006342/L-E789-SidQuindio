@@ -1,6 +1,7 @@
 .row{
     margin-top:40px;
     padding: 0 10px;
+    margin-bottom: 60px;
 }
 .clickable{
     cursor: pointer;   

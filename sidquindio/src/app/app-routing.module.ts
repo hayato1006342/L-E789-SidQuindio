@@ -12,6 +12,7 @@ import { CreateComponent } from './create/create.component';
 import { HistorialCompraComponent } from './historial-compra/historial-compra.component';
 import { ComprasComponent } from './compras/compras.component';
 import { DetailsComponent} from './details/details.component';
+import {RecoverEmailComponent} from './recover-email/recover-email.component';
 
 import {DetallesGuard} from './guards/detalles.guard';
 
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'', component: ContenidoComponent},
   {path:'login', component: LoginComponent},
   {path:'registro', component: RegisterComponent},
-  {path:'recover', component: RecoverComponent},
+  {path:'recover', component: RecoverEmailComponent},
+  {path:'recover-pass/:id', component: RecoverComponent},
   {path:'hoteles', component: ContenidoHotelesComponent},
   {path:'detalles/:id', component: DetallesComponent, canActivate: [DetallesGuard]},
   {path:'crear', component: CreateComponent},

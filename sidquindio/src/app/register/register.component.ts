@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ClientService } from '../client.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, } from '@angular/forms';
 import {environment} from '../../environments/environment'
 import { Router } from '@angular/router';
 
@@ -11,6 +11,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
+
 export class RegisterComponent implements OnInit {
 
   form: FormGroup;
@@ -23,12 +25,15 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      nombre: ['', Validators.required],
-      email: ['', Validators.email],
-      password: ['', Validators.required],
-      validatepassword: ['', Validators.required],
+      nombre: [ , Validators.required],
+      email:  [ ,Validators.email],
+      password: [ , Validators.required],
+      validatepassword: [ , Validators.required],
+      acceptTerms : [ true , Validators.requiredTrue]
+
     });
   } 
+
 
 
   async onSubmit(){
@@ -67,4 +72,9 @@ export class RegisterComponent implements OnInit {
     
   }
 
+  get email(){return this.form.get('email');}
+
 }
+
+
+

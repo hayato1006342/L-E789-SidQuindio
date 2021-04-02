@@ -30,7 +30,7 @@ export class HistorialCompraComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.client.getRequest(`${environment.BASE_API_REGISTER}/historial`,localStorage.getItem('token')).subscribe(
+    this.client.getRequest(`${environment.BASE_API_REGISTER}/authorization`,localStorage.getItem('token')).subscribe(
     (response: any) => {
       this.traerInformacion();
       console.log(response);

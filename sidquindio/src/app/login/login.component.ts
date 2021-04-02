@@ -5,6 +5,8 @@ import {environment} from '../../environments/environment'
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
+import jwt_decode from 'jwt-decode'
+
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 
@@ -16,6 +18,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 export class LoginComponent implements OnInit {
   form: FormGroup;
   spinner: boolean = true;
+  tokee: any;
 
   constructor(
     private fb: FormBuilder, 
@@ -38,23 +41,26 @@ export class LoginComponent implements OnInit {
         email: this.form.value.email,
         password: this.form.value.password
       }
-      console.log(data);
       this.spinner = false;
       this.client.postRequest(`${environment.BASE_API_REGISTER}/login`, data).subscribe(
       (response: any) => {
-        this.auth.login(response.token)
+        this.auth.login(response.token);
         this.auth.setCourrentUser(response.nombre);
-
-        console.log(localStorage.getItem('token'));
+        this.auth.setRangertUser(response.rango);
         this.route.navigate( ['/']);
-        console.log(response);
+        this.tokee = jwt_decode(localStorage.getItem('token'));
+        console.log(this.tokee.rango);
       },
       (error) => {
         this.spinner = true;
-        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Los datos ingresados son incorrectos!',
+        })
       })
     } else {
-      console.log("Error");
+      Swal.fire('Ingrese su correo y contraseña')
     }
     
   }

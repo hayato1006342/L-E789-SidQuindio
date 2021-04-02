@@ -25,14 +25,13 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       name: ['', Validators.required],
-      type: ['', Validators.required],
+      type: [, Validators.required],
       img: ['', Validators.required],
       imgc1: ['', Validators.required],
       imgc2: ['', Validators.required],
       imgc3: ['', Validators.required],
-      prices: ['', Validators.required],
-      category: ['', Validators.required],
-      locate: ['', Validators.required],
+      category: [, Validators.required],
+      locate: [, Validators.required],
       description: ['', Validators.required]
   })
   }
@@ -46,7 +45,6 @@ export class CreateComponent implements OnInit {
         imgc1: this.form.value.imgc1,
         imgc2: this.form.value.imgc2,
         imgc3: this.form.value.imgc3,
-        prices: this.form.value.prices,
         category: this.form.value.category,
         locate: this.form.value.locate,
         description: this.form.value.description
@@ -54,7 +52,7 @@ export class CreateComponent implements OnInit {
       console.log(data);
       Swal.fire({
         title: '???',
-        text: "",
+        text: "Seguro que desea crear",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -64,12 +62,12 @@ export class CreateComponent implements OnInit {
         if (result.isConfirmed) {
           Swal.fire({
             icon: 'success',
-            title: '................',
+            title: 'Creado con exito',
             showConfirmButton: false,
             timer: 1500
           })
           this.spinner = false;
-          this.client.postRequest(`${environment.BASE_API_REGISTER}/crear`, data).subscribe(
+          this.client.postRequest(`${environment.BASE_API_REGISTER}/admin/add`, data).subscribe(
             (response: any) => {
               this.route.navigate( ['/paneladmin']);
               console.log(response);
@@ -83,8 +81,10 @@ export class CreateComponent implements OnInit {
             console.log("Error");
           }
        
-      }) 
+      })
 
+    }else{
+      Swal.fire('Rellene todos los campos')
     }
     
   }
