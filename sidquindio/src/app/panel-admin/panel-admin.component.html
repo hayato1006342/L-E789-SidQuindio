@@ -1,9 +1,25 @@
 <app-nav></app-nav>
 
-
-<button type="button" class="btn btn-success" style="margin-left: 1100px; margin-top: 20px;">Crear</button>
-<button type="button" class="btn btn-danger" style="margin-left: 1px; margin-top: 20px;">Borrar</button>
-
+<div class="container">
+	<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+	  <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+		<svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+	  </a>
+  
+	  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+		<form class="d-flex" [formGroup]="form" (ngSubmit)="onSubmit()">
+			<input class="form-control me-2" type="search"  formControlName="search" style="width: 300px;" placeholder="Buscar" aria-label="Search">
+			<button class="btn btn-outline-success" type="submit">Buscar</button>
+		</form>
+	  </ul>
+  
+	  <div class="col-md-3 text-end">
+		<button type="button" class="btn btn-info me-2" (click)="refresh()">Refresh</button>
+		<button type="button" class="btn btn-success me-2">Crear</button>
+		<button type="button" class="btn btn-danger" (click)="delete()">Borrar</button>
+	  </div>
+	</header>
+  </div>
 
 	<div class="container">
     	<div class="row">
@@ -11,8 +27,6 @@
 				<div class="panel panel-success">
 					<div class="panel-heading">
 						<h3 class="panel-title">Atracciones</h3>
-						<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar">
-						<button type="button" class="btn btn-primary" style="margin-left: 20px;">Buscar</button>
 						<div class="pull-right">
 							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
 								<i class="glyphicon glyphicon-filter"></i>
@@ -32,9 +46,11 @@
 						</thead>
 						<tbody *ngFor="let i of datos">
 							<tr *ngIf="i.type == 1">
-								<td><input type="checkbox" value="{{i.id}}"></td>
+								<td><input type="checkbox" value="{{i.id}}" (click)="myfuntion(i.id)"></td>
 								<td>{{i.name}}</td>
 								<td>{{i.fecha}}</td>
+								<td><button type="button" class="btn btn-primary btn-sm">Precios</button></td>
+								<td><button type="button" class="btn btn-warning btn-sm" >Editar</button></td>
 							</tr>
 						</tbody>
 					</table>
@@ -45,8 +61,6 @@
 				<div class="panel panel-success">
 							<div class="panel-heading">
 								<h3 class="panel-title">Hoteles</h3>
-								<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar">
-								<button type="button" class="btn btn-primary" style="margin-left: 20px;">Buscar</button>
 								<div class="pull-right">
 									<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
 										<i class="glyphicon glyphicon-filter"></i>
@@ -66,9 +80,11 @@
 									</thead>
 										<tbody  *ngFor="let i of datos" >
 											<tr *ngIf="i.type == 2">
-												<td><input type="checkbox"></td>
+												<td><input type="checkbox" (click)="myfuntion(i.id)"> </td>
 												<td>{{i.name}}</td>
 												<td>{{i.fecha}}</td>
+												<td><button type="button" class="btn btn-primary btn-sm">Precios</button></td>
+												<td><button type="button" class="btn btn-warning btn-sm">Editar</button></td>
 											</tr>
 										</tbody>
 								</table>

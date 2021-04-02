@@ -14,7 +14,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 export class ContenidoComponent implements OnInit {
 
   datos;
-  formlug: FormGroup;
+  formdata: FormGroup;
+  formsearch : FormGroup;
 
   constructor(
     public mostrar:ClientService,
@@ -24,7 +25,7 @@ export class ContenidoComponent implements OnInit {
   ) { }
 
   traerInformacion(){
-    this.mostrar.getRequestAll(`${environment.BASE_API_REGISTER}/sites`).subscribe(
+    this.mostrar.getRequestAll(`${environment.BASE_API_REGISTER}/attractions`).subscribe(
       (data): any => this.datos = data,
       error => console.log("Error al traer los datos")
     )
@@ -33,24 +34,44 @@ export class ContenidoComponent implements OnInit {
 
   ngOnInit(): void {
     this.traerInformacion();
-    this.formlug = this.fb.group({
-      name: [ ,Validators.required],
-  })
+    this.formdata = this.fb.group({
+      place: [ 0 ,Validators.required],
+      category : [ 0 , Validators.required]
+    })
+    this.formsearch = this.fb.group({
+      search: ['', Validators.required]
+    })
   }
   
 
   async onSubmit(){
-    if (this.formlug.valid){
-      let data ={
-          name: this.formlug.value.name,
+    let data ={
+        place: this.formdata.value.place,
+        category : this.formdata.value.category
       };
-      this.client.postRequest(`${environment.BASE_API_REGISTER}/search`, data).subscribe(
+      console.log(data)
+      this.client.postRequest(`${environment.BASE_API_REGISTER}/filter/attraction`, data).subscribe(
         (data : any)=> {
           this.datos = data
           console.log(data)
         },(error) => {
           console.log("Error", error);
         }
-     )};
+    )};
+
+
+  async onSubmitsearch(){
+    if (this.formsearch.valid){
+      let data = {
+        search: this.formsearch.value.search
+      };
+      this.client.postRequest(`${environment.BASE_API_REGISTER}/search/attraction`, data).subscribe(
+        (data : any)=> {
+          this.datos = data
+          console.log(data)
+        },(error) => {
+          console.log("Error", error);
+        }
+    )};
   }
-}
+}    

@@ -18,6 +18,7 @@ import { CreateComponent } from './create/create.component';
 import { HistorialCompraComponent } from './historial-compra/historial-compra.component';
 import { ComprasComponent } from './compras/compras.component';
 import { DetailsComponent } from './details/details.component';
+import { RecoverEmailComponent } from './recover-email/recover-email.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { DetailsComponent } from './details/details.component';
     PanelAdminComponent,
     HistorialCompraComponent,
     ComprasComponent,
-    DetailsComponent
+    DetailsComponent,
+    RecoverEmailComponent
   ],
   imports: [
     BrowserModule,

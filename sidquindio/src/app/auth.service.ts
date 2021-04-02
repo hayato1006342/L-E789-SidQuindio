@@ -7,18 +7,37 @@ import { BehaviorSubject, Observable } from "rxjs";
 export class AuthService {
 
   isLogin = new BehaviorSubject<boolean>(this.checkToken())
-
+  isAdmin = new BehaviorSubject<boolean>(this.checkAdmin())
+  
+  rank:number
 
   private checkToken() : boolean {
     return !!localStorage.getItem('token');
   }
 
+  private checkAdmin(): boolean{
+    return !!localStorage.getItem('rango')
+  }
+
+  setRangertUser(user:string) : void {
+    localStorage.setItem('rango', user);
+  }
+
+  confirmarRango(): void{
+    this.rank = Number(localStorage.getItem('rango'))
+    if (this.rank == 2){
+      this.isAdmin.next(true)
+    }
+  }
+
+  isAdmins() : Observable<boolean> {
+    return this.isAdmin.asObservable();
+   }
 
 
   setCourrentUser(user:string) : void {
     localStorage.setItem('courrentUser', user);
   }
-
 
   getCourrentUser() : string {
     return localStorage.getItem('courrentUser');
@@ -41,8 +60,10 @@ export class AuthService {
 
   logout() : void {
     localStorage.removeItem('token');
+    localStorage.removeItem('rango')
     this.deleteCourrentUser();
     this.isLogin.next(false);
+    this.isAdmin.next(false);
   }
   constructor() { }
 }
