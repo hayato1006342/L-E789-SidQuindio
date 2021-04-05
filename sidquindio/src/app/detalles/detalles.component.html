@@ -1,120 +1,70 @@
 <app-nav></app-nav>
 ​
-<body >
-    <form class="form-signin"  [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="wraaper">
-        <div id="fondo">
-            <div id="form-signin">
-            <div *ngFor="let i of datos">
-                <div  class="col-12 text-center">
-                    <h2>{{i.name}}</h2>
+<main role="main" class="container">
+    <div class="jumbotron">
+        <div *ngFor="let i of datos">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                    <img id="imagenes" src="{{i.img1}}" class="d-block w-100 img-fluid" alt="...">
                 </div>
-            
-                <div class="col-12">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                            <img id="imagenes" src="{{i.img1}}" class="d-block w-100 img-fluid" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img id="imagenes" src="{{i.img2}}" class="d-block w-100 img-fluid" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img id="imagenes" src="{{i.img3}}" class="d-block w-100 img-fluid" alt="...">
-                        </div> 
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </a>
-                    </div>                
+                <div class="carousel-item">
+                    <img id="imagenes" src="{{i.img2}}" class="d-block w-100 img-fluid" alt="...">
                 </div>
-                <br>
-                <div class="col-12">
-                    <p> {{i.description}}</p>
+                <div class="carousel-item">
+                    <img id="imagenes" src="{{i.img3}}" class="d-block w-100 img-fluid" alt="...">
+                </div> 
                 </div>
-                <br>
-                
-                <div class="container">
-                    <div class="form-check">
-                        <div class="row justify-content-md-center">
-                            <div class="col col-lg-3">
-                                <h2>Opción</h2>
-                            </div>
-                            <div class="col col-lg-3">
-                                <h2>Precio</h2>
-                            </div>
-                            <div class="col col-lg-2">
-                                <h2>Cantidad</h2>
-                            </div>
-                        </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
+            </div>           
+        <br>
+        <h1>{{i.name}}</h1>
+        <br>
+        <p class="lead">{{i.description}}</p>
+
+        <div class="card text-center">
+            <div class="card-header">
+              <h2>Precios</h2>   
+            </div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Opcion</th>
+                            <th scope="col">Precio</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let j of precios">
+                            <th scope="row"><input type="radio" name="opcion" formControlName="opcion" value="{{j.price}}"></th>
+                            <td>{{j.price}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <h4 class="text-center">Cantidad</h4>
+                    <p class="text-center"><input type="number" formControlName="cantidad"></p> 
+                    <br>
+                    <div class="d-grid gap-2 col-4 mx-auto">
+                    <button class="btn btn-primary" type="submit">Comprar</button>
                     </div>
-                    
-                        <div class="form-check">
-                            <hr>
-                            <div class="row justify-content-md-center">
-                                <div class="col col-lg-2">
-                                    <input class="form-check-input" type="radio"  formControlName="opcion" id="exampleRadios1" value="{{precio1}}" checked (change)="cantidad1 = true" (change)="cantidad2 = false" (change)="cantidad3 = false">
-                                </div>
-                                <div class="col col-lg-4">
-                                    <input class="form-check-input2" type="text" id="precio1"  value="{{precio1 | currency:'USD'}}" readonly>
-                                </div>
-                                <div class="col col-lg-1">
-                                    <div *ngIf="cantidad1"><input class="form-check-input3" type="number" formControlName="cantidad"  min="1" max="50"  value="1"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-check">
-                            <hr>
-                            <div class="row justify-content-md-center">
-                                <div class="col col-lg-2">
-                                    <input class="form-check-input" type="radio"  formControlName="opcion" id="exampleRadios2" value="{{precio2}}" (change)="cantidad2 = true" (change)="cantidad1 = false" (change)="cantidad3 = false">
-                                </div>
-                                <div class="col col-lg-4">
-                                    <input class="form-check-input2" type="text" id="precio2"  value="{{precio2 | currency:'USD'}}" readonly>
-                                </div>
-                                <div class="col col-lg-1">
-                                    <div *ngIf="cantidad2"><input class="form-check-input3" type="number" formControlName="cantidad"  min="1" max="50" value="1"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-check">
-                            <hr>
-                            <div class="row justify-content-md-center">
-                                <div class="col col-lg-2">
-                                    <input class="form-check-input" type="radio"  id="exampleRadios3" formControlName="opcion" value="{{precio3}}" (change)="cantidad3 = true" (change)="cantidad1 = false" (change)="cantidad2 = false">
-                                </div>
-                                <div class="col col-lg-4">
-                                    <input class="form-check-input2" type="text" id="precio3"  value="{{precio3 | currency:'USD'}}" readonly>
-                                </div>
-                                <div class="col col-lg-1">
-                                    <div *ngIf="cantidad3"><input class="form-check-input3" type="number"  formControlName="cantidad" min="1" max="50" value="1"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-md-center">
-                            <div class="col-lg-3">
-                                <br>
-                                <button *ngIf="spinner" type="submit" class="btn btn-success">Comprar</button>
-                                <div *ngIf="!spinner" class="spinner-border text-primary" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>           
-            </div> 
-        </div>
+                </form>
+            </div>
+          </div>
         </div>
     </div>
-    </form>
-</body>
+  </main>
+
 <app-footer></app-footer>

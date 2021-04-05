@@ -1,52 +1,11 @@
-.wraaper {
-    margin: 80px;
-}
 
-#fondo{
-    background-color: rgb(123 194 255);
-    position: absolute;
-}
-
-#form-signin
-{
-    margin: 30px;
-    max-width: 1150px;
-    background-color: white;
-    padding: 15px 40px 50px 50px;
-    border: 1px solid;
-    border-radius: 10px;
-}
 #imagenes{
-    height: 350px;
+    height: 450px;
 }
 
 button{
     width: 140px;
     height: 50px;
-    position: relative;
     margin-left: 30%;
-    top: 40%;
-    margin-bottom: 30px;
-}
-
-#ubicacion {
-    padding: 0px 40px 5px 40px; 
-    font-weight:bold; 
-    background-color:#FF9566; 
-    color: #F00606; 
-    border-radius:20px; 
-    border: 1px solid; 
-    box-shadow: 3px 3px 4px #C30303;
-    font-size: 30px;
-    text-decoration: none;
-}
-
-#ubicacion:hover{
-    background-color:#F00606; 
-    color:#FF9566; 
-    box-shadow: 3px 3px 4px #FF3535;
-} 
-
-#imgGoogle {
-    width: 1030px;
+    margin-bottom: 80px;
 }

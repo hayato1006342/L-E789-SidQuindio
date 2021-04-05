@@ -25,8 +25,7 @@
               {{auth.getCourrentUser()}}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Historial</a></li>
-              <li *ngIf="auth.isAdmins() | async"><a class="dropdown-item" href="/crear">Crear</a></li>
+              <li><a class="dropdown-item" href="/historial">Historial</a></li>
               <li *ngIf="auth.isAdmins() | async"><a class="dropdown-item" href="/paneladmin">Panel Admin</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" [routerLink]="['/']" (click)="auth.logout()">Salir</a></li>

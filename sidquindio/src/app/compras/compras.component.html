@@ -32,7 +32,7 @@
                 </div>
                 <div class="col-6 fluid" >
                   <label for="inputAddress2" class="form-label">Fecha Expiracion</label>
-                  <input type="date" class="form-control" formControlName="date" >
+                  <input type="datetime" class="form-control" disabled=true value="{{fecha | date:'dd/MM/yyyy'}}">
                 </div>
                 <div class="col-6 fluid">
                   <button type="submit" class="btn btn-outline-success">Finalizar Comprar</button>

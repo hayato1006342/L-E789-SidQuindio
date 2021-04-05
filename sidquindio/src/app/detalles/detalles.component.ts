@@ -19,15 +19,9 @@ import { async } from '@angular/core/testing';
 })
 export class DetallesComponent implements OnInit {
 
-  public precio1:number = 5000;
-  public precio2:number = 45000;
-  public precio3:number = 95000;
-  public cantidad1:boolean = true;
-  public cantidad2:boolean = false;
-  public cantidad3:boolean = false;
-
 
   datos;
+  precios;
   spinner: boolean = true;
   form: FormGroup;
   
@@ -47,10 +41,11 @@ export class DetallesComponent implements OnInit {
 
 
   this.routes.paramMap
-      .subscribe((params : ParamMap) => {
-      let id = + params.get('id');
-      this.traerDatos(id);
-    });
+    .subscribe((params : ParamMap) => {
+    let id = + params.get('id');
+    this.traerDatos(id);
+  });
+
 
 
   this.client.getRequest(`${environment.BASE_API_REGISTER}/authorization`,localStorage.getItem('token')).subscribe(
@@ -63,7 +58,19 @@ export class DetallesComponent implements OnInit {
 
   }
 
+  traerPrecios(id:number){
+    this.client.getRequestId(`${environment.BASE_API_REGISTER}/prices/` + id).subscribe(
+      (data : any) =>{
+        this.precios = data;
+        console.log(data);
+      },(error) => {
+        console.log(error);
+      }
+    )
+  }
+
   async traerDatos(id:number){
+    this.traerPrecios(id);
     this.client.getRequestId(`${environment.BASE_API_REGISTER}/details/` + id).subscribe(
       (data): any =>{
         this.datos = data;
@@ -82,6 +89,8 @@ export class DetallesComponent implements OnInit {
       };
       this.buy.RecibirInformacion(data);
       this.route.navigate( ['/compras']);
+    }else{
+      Swal.fire('Selecciones una opción')
     }
   }
 

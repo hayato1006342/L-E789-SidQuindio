@@ -3,6 +3,7 @@ import { ClientService } from '../client.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {environment} from '../../environments/environment'
 import { Router } from '@angular/router';
+import jwt_decode from 'jwt-decode'
 
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
@@ -14,7 +15,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 export class HistorialCompraComponent implements OnInit {
 
   datos;
-
+  token;
   constructor(
     public mostrar:ClientService,
     private client: ClientService,
@@ -22,9 +23,21 @@ export class HistorialCompraComponent implements OnInit {
   ) { }
 
   traerInformacion(){
-    this.mostrar.getRequestAll(`${environment.BASE_API_REGISTER}/historial`).subscribe(
-      (data): any => this.datos = data["datos"],
-      error => console.log("Error al traer los datos")
+    this.token = jwt_decode(localStorage.getItem('token'));
+    let data = {
+      user: this.token.email
+    };
+    console.log(this.token.email);
+    this.mostrar.postRequest(`${environment.BASE_API_REGISTER}/history`, data).subscribe(
+      (data): any => {
+        this.datos = data;
+      },(error) =>{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No hay datos debido a que usted no ha realizado ninguna compra!',
+        })
+      }
     )
   }
 

@@ -11,8 +11,8 @@ import { PanelAdminComponent } from './panel-admin/panel-admin.component';
 import { CreateComponent } from './create/create.component';
 import { HistorialCompraComponent } from './historial-compra/historial-compra.component';
 import { ComprasComponent } from './compras/compras.component';
-import { DetailsComponent} from './details/details.component';
 import {RecoverEmailComponent} from './recover-email/recover-email.component';
+import {EditComponent} from './edit/edit.component';
 
 import {DetallesGuard} from './guards/detalles.guard';
 
@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:'paneladmin', component: PanelAdminComponent},
   {path:'historial', component: HistorialCompraComponent},
   {path:'compras', component: ComprasComponent},
-  {path:'details', component: DetailsComponent}
+  {path:'editar/:id', component: EditComponent},
 ];
 
 
