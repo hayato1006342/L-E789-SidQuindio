@@ -1,0 +1,68 @@
+<app-nav></app-nav>
+
+<body >
+  <div class="fondo" >
+      <div class="wraaper">
+        <form class="row g-3" id="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="col-12 text-center ">
+            <h2>Edit</h2>
+          </div>
+          <div class="col-6">
+            <label for="inputAddress" class="form-label">Nombre Lugar</label>
+            <input type="text" formControlName="name" class="form-control">
+          </div>
+          <div class="col-6">
+            <label for="inputAddress" class="form-label">Tipo de lugar</label>
+            <select  formControlName="type" class="form-select ">
+              <option value="1">Atraccion</option> 
+              <option value="2">Hotel</option> 
+            </select>
+          </div>
+          <div class="col-6">
+            <label for="inputAddress" class="form-label">Imagen</label>
+            <input type="url" formControlName="img" class="form-control">
+          </div>
+          <div class="col-6">
+            <label for="inputAddress" class="form-label">Imagen Carusell 1</label>
+            <input type="url" formControlName="imgc1" class="form-control">
+          </div>
+          <div class="col-6">
+            <label for="inputAddress" class="form-label">Imagen Carusell 2</label>
+            <input type="url" formControlName="imgc2" class="form-control">
+          </div>
+          <div class="col-6">
+            <label for="inputAddress" class="form-label">Imagen Carusell 3</label>
+            <input type="url" formControlName="imgc3" class="form-control">
+          </div>
+          <div class="col-6">
+            <label for="inputAddress" class="form-label">Descripción</label>
+            <textarea class="form-control" formControlName="description" id="2" rows="5"></textarea>
+          </div>
+          <div class="col-6">
+            <label for="inputAddress" class="form-label">Categoria</label>
+            <select  formControlName="category" class="form-select Op">
+              <option value="1">Parque urbano</option>
+              <option value="2">Parque tematico</option>
+              <option value="3">Parque natural</option>
+              <option value="4">Hotel</option> 
+            </select>
+            <br>
+            <label for="inputAddress" class="form-label">Ubicacion</label>
+            <select  formControlName="locate" class="form-select Op">
+              <option value="1">Armenia</option> 
+              <option value="2">Pereira</option> 
+              <option value="2">Salento</option>
+            </select>
+          </div>
+          <div class="col-6">
+            <button type="submit" *ngIf="spinner" class="btn btn-lg btn-outline-primary" >Actualizar</button>
+            <div  *ngIf="!spinner" class="spinner-border text-primary ut"   role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        </form>
+      </div>
+  </div>
+</body>
+
+<app-footer></app-footer> 

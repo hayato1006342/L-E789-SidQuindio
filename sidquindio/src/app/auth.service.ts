@@ -26,7 +26,9 @@ export class AuthService {
   confirmarRango(): void{
     this.rank = Number(localStorage.getItem('rango'))
     if (this.rank == 2){
-      this.isAdmin.next(true)
+      this.isAdmin.next(true);
+    }else{
+      this.isAdmin.next(false);
     }
   }
 
